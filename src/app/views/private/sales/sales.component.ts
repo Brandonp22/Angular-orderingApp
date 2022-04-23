@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { Product, Sale } from 'src/app/core/models';
 import { FirebaseService, NotifyService } from 'src/app/core/services';
 import Swal from 'sweetalert2';
+import exportFromJSON from 'export-from-json';
 
 @Component({
   selector: 'app-sales',
@@ -40,4 +41,18 @@ export class SalesComponent implements OnInit {
     return JSON.parse(cart);
   }
 
+  onClick() {
+    console.log('clicked');
+    this.afs.collection('sales').valueChanges().subscribe((res : any) => {
+      this.sales = res;
+      console.log(this.sales);
+
+      let date: Date = new Date();
+      const data = this.sales
+      const fileName = 'Reporte - ' + date
+      const exportType = 'json'
+  
+      exportFromJSON({ data, fileName, exportType })
+    });
+  }
 }

@@ -1,4 +1,7 @@
 <div class="col-md-12">
+
+  <button (click)="onClick()" label="Importar Datos" pButton type="button" class="p-button-sm"></button>
+
   <p-table dataKey="id" stateKey="sales" [value]="sales" styleClass="p-datatable-striped" [rows]="10"
     [paginator]="true" #yp1 lang="fr">
     <ng-template pTemplate="caption">
@@ -18,9 +21,9 @@
         </th>
         <th class="text-right" pSortableColumn="amount">Total <p-sortIcon field="amount"></p-sortIcon></th>
         <th pSortableColumn="carts">
-          Cart <p-columnFilter type="text" field="carts" display="menu"></p-columnFilter>
+          Carrito <p-columnFilter type="text" field="carts" display="menu"></p-columnFilter>
         </th>
-        <th pSortableColumn="status">Statut <p-sortIcon field="status"></p-sortIcon></th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
         <th class="text-right" pSortableColumn="created_at">Pagado el <p-sortIcon field="created_at"></p-sortIcon></th>
       </tr>
     </ng-template>
